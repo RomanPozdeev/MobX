@@ -1,0 +1,60 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'jacoco'
+    id "io.gitlab.arturbosch.detekt" version "1.7.0-beta2"
+    id "org.jlleitschuh.gradle.ktlint" version "9.2.1"
+}
+
+detekt {
+    failFast = true // fail build on any finding
+    buildUponDefaultConfig = true // preconfigure defaults
+
+    reports {
+        html.enabled = false // observe findings in your browser with structure and code snippets
+        xml.enabled = true // checkstyle like format mainly for integrations like Jenkins
+        txt.enabled = false // similar to the console output, contains issue signature to manually edit baseline files
+    }
+}
+
+tasks.detekt.jvmTarget = "1.8"
+
+def spek_version = '2.0.10'
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    testImplementation "org.assertj:assertj-core:3.12.2"
+    testImplementation "org.spekframework.spek2:spek-dsl-jvm:$spek_version"
+    testRuntimeOnly "org.spekframework.spek2:spek-runner-junit5:$spek_version"
+
+    // spek requires kotlin-reflect, can be omitted if already in the classpath
+    testRuntimeOnly "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+}
+
+// setup the test task
+test {
+    useJUnitPlatform {
+        includeEngines 'spek2'
+    }
+}
+
+jacoco {
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+check.dependsOn jacocoTestReport
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
