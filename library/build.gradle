@@ -2,8 +2,7 @@ plugins {
     id 'java-library'
     id 'kotlin'
     id 'jacoco'
-    id "io.gitlab.arturbosch.detekt" version "1.7.0-beta2"
-    id "org.jlleitschuh.gradle.ktlint" version "9.2.1"
+    id "io.gitlab.arturbosch.detekt" version "1.7.4"
 }
 
 detekt {
