@@ -1,4 +1,4 @@
-package com.example.mobxexample.presentation.main.model
+package com.example.mobxexample.domain
 
 import mobx.core.observable
 

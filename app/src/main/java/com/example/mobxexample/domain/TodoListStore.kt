@@ -1,6 +1,5 @@
 package com.example.mobxexample.domain
 
-import com.example.mobxexample.presentation.main.model.Task
 import com.example.mobxexample.presentation.main.util.TaskGenerator
 import mobx.collections.toObservableList
 import mobx.core.action

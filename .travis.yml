@@ -1,0 +1,41 @@
+sudo: required
+
+language: android
+
+jdk: oraclejdk8
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-29.0.3
+    - android-29
+    - extra-android-m2repository
+    - extra-google-m2repository
+    - extra-android-support
+
+notifications:
+  email:
+    recipients:
+      - rpozdeev@65apps.com
+    on_success: never
+    on_failure: always
+
+#stages:
+#- build
+#- test
+#- report
+
+#jobs:
+#  include:
+#  - stage: build
+#    script: ./gradlew assembleDebug
+#  - stage: test
+#    script: ./gradlew testDebugUnitTest
+#  - stage: report
+#    script: ./gradlew library:jacocoTestReportDebug library:coveralls
+
+script:
+  - ./gradlew assembleDebug
+  - ./gradlew testDebugUnitTest
+  - ./gradlew library:jacocoTestReportDebug library:coveralls

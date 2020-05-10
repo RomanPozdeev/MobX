@@ -1,6 +1,6 @@
 package com.example.mobxexample.presentation.main.util
 
-import com.example.mobxexample.presentation.main.model.Task
+import com.example.mobxexample.domain.Task
 
 object TaskGenerator {
     private const val DefaultTaskCount = 5

@@ -4,11 +4,10 @@ import android.text.SpannableString
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.mobxexample.presentation.main.model.Task
+import com.example.mobxexample.domain.Task
 import com.example.mobxexample.presentation.main.util.setStrikeThroughSpan
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_task.view.description
-import kotlinx.android.synthetic.main.item_task.view.title
+import kotlinx.android.synthetic.main.item_task.view.*
 import mobx.core.Disposable
 import mobx.core.autorun
 

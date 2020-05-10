@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobxexample.R
-import com.example.mobxexample.presentation.main.model.Task
+import com.example.mobxexample.domain.Task
 
 class TaskAdapter(private val listener: (Task) -> Unit) : RecyclerView.Adapter<TaskViewHolder>() {
 

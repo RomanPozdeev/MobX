@@ -7,17 +7,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobxexample.R
+import com.example.mobxexample.domain.Task
 import com.example.mobxexample.presentation.main.adapter.TaskAdapter
-import com.example.mobxexample.presentation.main.model.Task
 import com.example.mobxexample.presentation.utils.mobx.observeChanges
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.android.synthetic.main.activity_main.addTask
-import kotlinx.android.synthetic.main.activity_main.clear
-import kotlinx.android.synthetic.main.activity_main.done
-import kotlinx.android.synthetic.main.activity_main.pending
-import kotlinx.android.synthetic.main.activity_main.todoList
-import kotlinx.android.synthetic.main.activity_main.total
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
@@ -78,7 +73,13 @@ class MainActivity : AppCompatActivity() {
                     .text.toString()
                 val description =
                     dialog.findViewById<TextInputEditText>(R.id.descriptionTask).text.toString()
-                viewModel.onAddTaskClicked(Task(viewModel.taskCount(), title, description))
+                viewModel.onAddTaskClicked(
+                    Task(
+                        viewModel.taskCount(),
+                        title,
+                        description
+                    )
+                )
             }
             .setNegativeButton(getString(R.string.cancel), null)
             .setTitle(getString(R.string.new_task))
