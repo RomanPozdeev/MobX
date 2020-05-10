@@ -37,5 +37,5 @@ notifications:
 
 script:
   - ./gradlew assembleDebug
-  - ./gradlew testDebugUnitTest
-  - ./gradlew library:jacocoTestReportDebug library:coveralls
+  - ./gradlew check
+  - ./gradlew library:jacocoTestReport library:coveralls
