@@ -21,21 +21,9 @@ notifications:
     on_success: never
     on_failure: always
 
-#stages:
-#- build
-#- test
-#- report
-
-#jobs:
-#  include:
-#  - stage: build
-#    script: ./gradlew assembleDebug
-#  - stage: test
-#    script: ./gradlew testDebugUnitTest
-#  - stage: report
-#    script: ./gradlew library:jacocoTestReportDebug library:coveralls
-
 script:
   - ./gradlew assembleDebug
   - ./gradlew check
-  - ./gradlew library:jacocoTestReport library:coveralls
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
