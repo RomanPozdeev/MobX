@@ -27,6 +27,7 @@ class TaskViewHolder(
     }
 
     fun bind(task: Task) {
+        unbind()
         autorun {
             containerView.title.text = task.title
             containerView.description.text = task.description

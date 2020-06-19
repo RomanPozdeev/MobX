@@ -1,10 +1,18 @@
 package com.example.mobxexample.presentation.main
 
 import androidx.lifecycle.ViewModel
+import com.example.mobxexample.domain.JokeStore
 import com.example.mobxexample.domain.Task
 import com.example.mobxexample.domain.TodoListStore
 
-class MainViewModel(val todoListStore: TodoListStore) : ViewModel() {
+class MainViewModel(
+    val todoListStore: TodoListStore,
+    val jokeStore: JokeStore
+) : ViewModel() {
+
+    init {
+        jokeStore.subscribe()
+    }
 
     val tasks = todoListStore.todoList
 
@@ -20,5 +28,10 @@ class MainViewModel(val todoListStore: TodoListStore) : ViewModel() {
 
     fun onTaskClicked(task: Task) {
         todoListStore.changeTaskStatus(task)
+    }
+
+    override fun onCleared() {
+        jokeStore.unsubscribe()
+        super.onCleared()
     }
 }

@@ -2,6 +2,7 @@ package com.example.mobxexample.presentation.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.mobxexample.domain.JokeStore
 import com.example.mobxexample.domain.TodoListStore
 
 class MainViewModelFactory : ViewModelProvider.Factory {
@@ -9,7 +10,8 @@ class MainViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
             return MainViewModel(
-                TodoListStore()
+                TodoListStore(),
+                JokeStore()
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobxexample.R
+import com.example.mobxexample.domain.JokeState
 import com.example.mobxexample.domain.Task
 import com.example.mobxexample.presentation.main.adapter.TaskAdapter
 import com.example.mobxexample.presentation.utils.mobx.observeChanges
@@ -62,6 +63,13 @@ class MainActivity : AppCompatActivity() {
 
         observeChanges(viewModel::tasks) {
             taskAdapter.setTasks(it)
+        }
+
+        observeChanges(viewModel.jokeStore::jokeState) {
+            when (it) {
+                JokeState.Loading -> joke.text = "Please, wait"
+                is JokeState.Ready -> joke.text = it.joke.value
+            }
         }
     }
 
