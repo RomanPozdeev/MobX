@@ -46,7 +46,7 @@ fun clear() = action("clearAllTasks") {
 A string argument of action is a payload. It can be used for logging.
 
 ### Usage:
-Please check out [app](sample)
+Please check out [app](app)
 
 or
 
