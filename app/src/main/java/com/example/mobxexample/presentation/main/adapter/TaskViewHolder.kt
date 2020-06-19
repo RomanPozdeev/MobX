@@ -28,10 +28,20 @@ class TaskViewHolder(
 
     fun bind(task: Task) {
         unbind()
+
         autorun {
             containerView.title.text = task.title
-            containerView.description.text = task.description
+        }.apply {
+            disposables.add(this)
+        }
 
+        autorun {
+            containerView.description.text = task.description
+        }.apply {
+            disposables.add(this)
+        }
+
+        autorun {
             val title = SpannableString(task.title)
             val description = SpannableString(task.description)
             if (task.done) {
