@@ -53,18 +53,20 @@ or
 Add it in your root build.gradle at the end of repositories:
 
 Step 1. Add the JitPack repository to your build file
+```groovy
 	allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
-
+```
 Step 2. Add the dependency
+```groovy
 	dependencies {
 	    implementation 'com.github.RomanPozdeev:MobX:0.1'
 	}
-
+```
 ## More
 * https://mobx.js.org/intro/concepts.html - original MobX documentation
 * https://github.com/mobxjs/mobx.dart - MobX for Dart/Flutter
