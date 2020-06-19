@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/RomanPozdeev/MobX.svg?branch=master)](https://travis-ci.com/RomanPozdeev/MobX.svg?branch=master)
 [![codecov](https://codecov.io/gh/RomanPozdeev/MobX/branch/master/graph/badge.svg)](https://codecov.io/gh/RomanPozdeev/MobX)
+[![](https://jitpack.io/v/RomanPozdeev/MobX.svg)](https://jitpack.io/#RomanPozdeev/MobX)
 
 # MobX for Kotlin
 
@@ -54,18 +55,18 @@ Add it in your root build.gradle at the end of repositories:
 
 Step 1. Add the JitPack repository to your build file
 ```groovy
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 Step 2. Add the dependency
 ```groovy
-	dependencies {
-	    implementation 'com.github.RomanPozdeev:MobX:0.1'
-	}
+dependencies {
+    implementation 'com.github.RomanPozdeev:MobX:0.1'
+}
 ```
 ## More
 * https://mobx.js.org/intro/concepts.html - original MobX documentation
