@@ -30,9 +30,9 @@ Just like an observable, computed value notifies about its changes.
 Autorun runs a reaction when its dependencies (observables and computed) are changed.
 ```kotlin
 val disposable = autorun {
-                             containerView.title.text = task.title
-                             containerView.description.text = task.description
-                         }
+    containerView.title.text = task.title
+    containerView.description.text = task.description
+}
 ```
 In this example logging runs immediately and then on any change of appleCount, bananaCount or fruitCount. There are no needs to subscribe to these observables manually! Another example of reaction is UI updating.
 
@@ -40,10 +40,30 @@ In this example logging runs immediately and then on any change of appleCount, b
 Actions allow to mutate observables. Actions batch mutations, so a notifications will occur only after an action has finished.
 ```kotlin
 fun clear() = action("clearAllTasks") {
-                      todoList.clear()
-                  }
+    todoList.clear()
+}
 ```
 A string argument of action is a payload. It can be used for logging.
+
+### Usage:
+Please check out [app](sample)
+
+or
+
+Add it in your root build.gradle at the end of repositories:
+
+Step 1. Add the JitPack repository to your build file
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+Step 2. Add the dependency
+	dependencies {
+	    implementation 'com.github.RomanPozdeev:MobX:0.1'
+	}
 
 ## More
 * https://mobx.js.org/intro/concepts.html - original MobX documentation
