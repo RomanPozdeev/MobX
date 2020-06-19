@@ -4,6 +4,7 @@ plugins {
     id 'jacoco'
     id 'io.gitlab.arturbosch.detekt' version '1.7.4'
     id 'com.github.kt3k.coveralls' version '2.10.1'
+    id 'maven-publish'
 }
 
 detekt {
@@ -66,4 +67,16 @@ coveralls {
 tasks.coveralls {
     dependsOn 'jacocoTestReportDebug'
     onlyIf { System.env.'CI' }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'mobxkotlin'
+            artifactId = 'mobxkotlin-library'
+            version = '0.1'
+
+            from components.java
+        }
+    }
 }
