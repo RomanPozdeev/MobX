@@ -13,11 +13,14 @@ object WhenTest : Spek({
             val testObject =
                 mobx.testtools.SimpleTestObservable()
             val sideEffectCallCount = AtomicInteger(0)
-            whenThen(predicate = {
-                true
-            }, sideEffect = {
-                sideEffectCallCount.incrementAndGet()
-            })
+            whenThen(
+                predicate = {
+                    true
+                },
+                sideEffect = {
+                    sideEffectCallCount.incrementAndGet()
+                }
+            )
 
             it("should invoke sideEffect once") {
                 assertThat(sideEffectCallCount.get()).isEqualTo(1)
@@ -31,11 +34,14 @@ object WhenTest : Spek({
 
         describe("when with simple false predicate") {
             val sideEffectCallCount = AtomicInteger(0)
-            whenThen(predicate = {
-                false
-            }, sideEffect = {
-                sideEffectCallCount.incrementAndGet()
-            })
+            whenThen(
+                predicate = {
+                    false
+                },
+                sideEffect = {
+                    sideEffectCallCount.incrementAndGet()
+                }
+            )
 
             it("should not invoke sideEffect") {
                 assertThat(sideEffectCallCount.get()).isEqualTo(0)
@@ -50,12 +56,15 @@ object WhenTest : Spek({
 
             beforeEachTest {
                 testObject.reset()
-                disposable = whenThen(predicate = {
-                    predicateCallCount.incrementAndGet()
-                    testObject.counter >= 1
-                }, sideEffect = {
-                    sideEffectCallCount.incrementAndGet()
-                })
+                disposable = whenThen(
+                    predicate = {
+                        predicateCallCount.incrementAndGet()
+                        testObject.counter >= 1
+                    },
+                    sideEffect = {
+                        sideEffectCallCount.incrementAndGet()
+                    }
+                )
             }
 
             it("should invoke predicate on creation") {

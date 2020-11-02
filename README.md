@@ -38,7 +38,7 @@ val disposable = autorun {
 In this example logging runs immediately and then on any change of task title or task description. There are no needs to subscribe to these observables manually! Another example of reaction is UI updating.
 
 ### Action
-Actions allow to mutate observables. Actions batch mutations, so a notifications will occur only after an action has finished.
+Actions allow to mutate observables. Actions batch mutations, so a notifications will occur **only after an action has finished**.
 ```kotlin
 fun clear() = action {
     todoList.clear()

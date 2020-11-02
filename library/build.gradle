@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
     id 'kotlin'
     id 'jacoco'
-    id 'io.gitlab.arturbosch.detekt' version '1.7.4'
+    id 'io.gitlab.arturbosch.detekt' version '1.14.2'
     id 'com.github.kt3k.coveralls' version '2.10.1'
     id 'maven-publish'
 }
@@ -23,7 +23,6 @@ tasks.detekt.jvmTarget = "1.8"
 def spek_version = '2.0.10'
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation "org.assertj:assertj-core:3.12.2"
     testImplementation "org.spekframework.spek2:spek-dsl-jvm:$spek_version"
     testRuntimeOnly "org.spekframework.spek2:spek-runner-junit5:$spek_version"

@@ -20,11 +20,13 @@ fun <R> LifecycleOwner.observeChanges(
         disposable = reaction(dataCallback, effect)
     }
 
-    lifecycle.addObserver(LifecycleEventObserver { _, event ->
-        if (event == Lifecycle.Event.ON_START) {
-            disposable = reaction(dataCallback, effect)
-        } else if (event == Lifecycle.Event.ON_STOP) {
-            disposable?.dispose()
+    lifecycle.addObserver(
+        LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_START) {
+                disposable = reaction(dataCallback, effect)
+            } else if (event == Lifecycle.Event.ON_STOP) {
+                disposable?.dispose()
+            }
         }
-    })
+    )
 }

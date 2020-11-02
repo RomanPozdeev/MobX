@@ -3,7 +3,8 @@ package mobx.util
 import mobx.core.Observable
 import mobx.core.Observer
 
-internal class ObserversDelegate(counterStart: Int = Int.MIN_VALUE) : mobx.core.Changeable,
+internal class ObserversDelegate(counterStart: Int = Int.MIN_VALUE) :
+    mobx.core.Changeable,
     Observable {
     private val delegate = CommonListenersDelegate<Observer>()
 

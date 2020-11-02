@@ -22,22 +22,31 @@ class ObservableTrackerHolderTest : Spek({
             }
         }
 
-        ObservableTrackerHolder.replaceTo(tracker, transaction = {
-            transactionCall++
-        })
+        ObservableTrackerHolder.replaceTo(
+            tracker,
+            transaction = {
+                transactionCall++
+            }
+        )
 
         it("should call transaction on replace") {
             assertThat(transactionCall).isEqualTo(1)
         }
 
         it("should return prev tracker") {
-            ObservableTrackerHolder.replaceTo(tracker, transaction = {
-                ObservableTrackerHolder.replaceTo(tracker, transaction = {
+            ObservableTrackerHolder.replaceTo(
+                tracker,
+                transaction = {
+                    ObservableTrackerHolder.replaceTo(
+                        tracker,
+                        transaction = {
+                            transactionCall++
+                        }
+                    )
+                    assertThat(ObservableTrackerHolder.currentTracker).isEqualTo(tracker)
                     transactionCall++
-                })
-                assertThat(ObservableTrackerHolder.currentTracker).isEqualTo(tracker)
-                transactionCall++
-            })
+                }
+            )
             assertThat(ObservableTrackerHolder.currentTracker).isNull()
         }
     }

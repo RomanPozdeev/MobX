@@ -11,12 +11,15 @@ object ReactionTest : Spek({
             var dataCallbackCalled = 0
             var effectCalled = 0
 
-            reaction(dataCallback = {
-                dataCallbackCalled++
-                true
-            }, sideEffect = {
-                effectCalled++
-            })
+            reaction(
+                dataCallback = {
+                    dataCallbackCalled++
+                    true
+                },
+                sideEffect = {
+                    effectCalled++
+                }
+            )
 
             assertThat(dataCallbackCalled).isEqualTo(1)
             assertThat(effectCalled).isEqualTo(1)
@@ -27,12 +30,15 @@ object ReactionTest : Spek({
             var effectCalled = 0
             val test = mobx.testtools.SimpleTestObservable()
 
-            reaction(dataCallback = {
-                dataCallbackCalled++
-                test.counter
-            }, sideEffect = {
-                effectCalled++
-            })
+            reaction(
+                dataCallback = {
+                    dataCallbackCalled++
+                    test.counter
+                },
+                sideEffect = {
+                    effectCalled++
+                }
+            )
 
             test.inc()
             test.inc()
@@ -45,11 +51,14 @@ object ReactionTest : Spek({
             var effectCalled = 0
             val test = mobx.testtools.SimpleTestObservable()
 
-            reaction(dataCallback = {
-                test.counter
-            }, sideEffect = {
-                effectCalled++
-            }).dispose()
+            reaction(
+                dataCallback = {
+                    test.counter
+                },
+                sideEffect = {
+                    effectCalled++
+                }
+            ).dispose()
 
             test.inc()
             test.inc()
@@ -61,12 +70,15 @@ object ReactionTest : Spek({
             var effectCalled = 0
             val test = mobx.testtools.ChangeableTestObservable()
 
-            reaction(dataCallback = {
-                dataCallbackCalled++
-                test.counter
-            }, sideEffect = {
-                effectCalled++
-            })
+            reaction(
+                dataCallback = {
+                    dataCallbackCalled++
+                    test.counter
+                },
+                sideEffect = {
+                    effectCalled++
+                }
+            )
 
             test.inc()
             test.inc()

@@ -2,7 +2,8 @@ package mobx.core
 
 typealias ComputedBody<R> = () -> R
 
-class Computed<R : Any?>(private val body: ComputedBody<R>) : ObservableTracker,
+class Computed<R : Any?>(private val body: ComputedBody<R>) :
+    ObservableTracker,
     Observer {
 
     private var needRecalculation = true

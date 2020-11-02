@@ -11,7 +11,9 @@ object TaskGenerator {
                 Task(
                     it,
                     "Task_$it",
-                    "Description_$it"))
+                    "Description_$it"
+                )
+            )
         }
         return tasks
     }

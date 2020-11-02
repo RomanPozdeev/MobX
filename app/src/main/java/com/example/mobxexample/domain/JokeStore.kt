@@ -35,14 +35,13 @@ class JokeStore {
                 override fun onResponse(call: Call<Joke>, response: Response<Joke>) {
                     if (response.isSuccessful) {
                         response.body()?.let {
-                            //should be called on the main thread
+                            // should be called on the main thread
                             jokeState = JokeState.Ready(it)
                         }
                     }
                 }
             })
         }
-
     }
 
     var jokeState by observable<JokeState>(JokeState.Loading)

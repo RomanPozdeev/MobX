@@ -18,8 +18,8 @@ class TaskAdapter(private val listener: (Task) -> Unit) : RecyclerView.Adapter<T
 
         override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem.description == newItem.description &&
-                    oldItem.done == newItem.done &&
-                    oldItem.title == newItem.title
+                oldItem.done == newItem.done &&
+                oldItem.title == newItem.title
         }
     }
 
