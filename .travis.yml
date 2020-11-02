@@ -4,6 +4,9 @@ language: android
 
 jdk: oraclejdk8
 
+before_install:
+  - yes | sdkmanager "platforms;android-30"
+
 android:
   components:
     - tools
