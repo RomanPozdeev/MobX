@@ -3,6 +3,7 @@ package com.example.mobxexample.presentation.utils.mobx
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
+import mobx.core.Disposable
 import mobx.core.ReactionDataCallback
 import mobx.core.ReactionSideEffectCallback
 import mobx.core.reaction
@@ -15,7 +16,7 @@ fun <R> LifecycleOwner.observeChanges(
         return
     }
 
-    var disposable: mobx.core.Disposable? = null
+    var disposable: Disposable? = null
     if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
         disposable = reaction(dataCallback, effect)
     }

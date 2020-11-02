@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobxexample.R
+import com.example.mobxexample.databinding.ItemTaskBinding
 import com.example.mobxexample.domain.Task
 
 class TaskAdapter(private val listener: (Task) -> Unit) : RecyclerView.Adapter<TaskViewHolder>() {
@@ -27,8 +27,8 @@ class TaskAdapter(private val listener: (Task) -> Unit) : RecyclerView.Adapter<T
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.item_task, parent, false)
-        return TaskViewHolder(view) { position -> listener.invoke(differ.currentList[position]) }
+        val binding = ItemTaskBinding.inflate(inflater, parent, false)
+        return TaskViewHolder(binding) { position -> listener.invoke(differ.currentList[position]) }
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) =

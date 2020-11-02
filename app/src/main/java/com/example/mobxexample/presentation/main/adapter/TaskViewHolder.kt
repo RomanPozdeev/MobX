@@ -1,25 +1,23 @@
 package com.example.mobxexample.presentation.main.adapter
 
 import android.text.SpannableString
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.mobxexample.databinding.ItemTaskBinding
 import com.example.mobxexample.domain.Task
 import com.example.mobxexample.presentation.main.util.setStrikeThroughSpan
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_task.view.*
 import mobx.core.Disposable
 import mobx.core.autorun
 
 class TaskViewHolder(
-    override val containerView: View,
+    private val binding: ItemTaskBinding,
     clickListener: (Int) -> Unit
-) : ViewHolder(containerView), LayoutContainer {
+) : ViewHolder(binding.root) {
 
     private val disposables = mutableSetOf<Disposable>()
 
     init {
-        containerView.setOnClickListener {
+        binding.root.setOnClickListener {
             if (adapterPosition != RecyclerView.NO_POSITION) {
                 clickListener.invoke(adapterPosition)
             }
@@ -30,15 +28,15 @@ class TaskViewHolder(
         unbind()
 
         autorun {
-            containerView.title.text = task.title
-        }.apply {
-            disposables.add(this)
+            binding.title.text = task.title
+        }.also {
+            disposables.add(it)
         }
 
         autorun {
-            containerView.description.text = task.description
-        }.apply {
-            disposables.add(this)
+            binding.description.text = task.description
+        }.also {
+            disposables.add(it)
         }
 
         autorun {
@@ -48,10 +46,10 @@ class TaskViewHolder(
                 title.setStrikeThroughSpan()
                 description.setStrikeThroughSpan()
             }
-            containerView.title.text = title
-            containerView.description.text = description
-        }.apply {
-            disposables.add(this)
+            binding.title.text = title
+            binding.description.text = description
+        }.also {
+            disposables.add(it)
         }
     }
 
