@@ -75,7 +75,7 @@ dependencies {
 }
 ```
 ## More
-* https://mobx.js.org/intro/concepts.html - original MobX documentation
+* https://mobx.js.org/the-gist-of-mobx.html - original MobX documentation
 * https://github.com/mobxjs/mobx.dart - MobX for Dart/Flutter
 * https://www.packtpub.com/web-development/mobx-quick-start-guide
 * https://hackernoon.com/becoming-fully-reactive-an-in-depth-explanation-of-mobservable-55995262a254 - an in-depth explanation of MobX
